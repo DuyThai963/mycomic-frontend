@@ -19,7 +19,7 @@ export default async function ChapterPage({ params }: { params: any }) {
     const chapterList = comicDetail.chapters?.[0]?.server_data || [];
 
     // Tìm vị trí của chương hiện tại trong danh sách
-    const currentIdx = chapterList.findIndex(chap => chap.chapter_api_data.endsWith(chapterId));
+    const currentIdx = chapterList.findIndex((chap: any) => chap.chapter_api_data.endsWith(chapterId));
 
     // Hàm helper lấy ID từ URL
     const getChapterId = (url: string) => {
