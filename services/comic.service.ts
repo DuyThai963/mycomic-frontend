@@ -1,6 +1,6 @@
-import { HomeResponse } from '../types/comic';
+import { HomeResponse, ComicDetailResponse, ChapterDetailResponse } from '../types/comic';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://mycomic-backend.onrender.com/api';
 
 export const comicService = {
     // Lấy dữ liệu trang chủ
