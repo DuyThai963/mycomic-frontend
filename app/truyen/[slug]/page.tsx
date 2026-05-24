@@ -36,8 +36,8 @@ export default async function ComicDetailPage({ params }: { params: Promise<{ sl
                 <div className="flex-1 flex flex-col">
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">{comic.name}</h1>
                     <div className="flex flex-wrap gap-2 mb-4">
-                        {comic.category.map((cat) => (
-                            <span key={cat.id} className="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                        {comic.category.map((cat: any) => (
+                            <span key={cat.id} className="px-3 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">
                                 {cat.name}
                             </span>
                         ))}
