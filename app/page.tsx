@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { comicService } from '@/services/comic.service';
 import ComicCard from '@/components/ComicCard';
 import ContinueReading from '@/components/ContinueReading';
