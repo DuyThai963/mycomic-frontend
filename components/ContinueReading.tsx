@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface HistoryItem {
     slug: string;
@@ -71,11 +72,13 @@ export default function ContinueReading() {
                         </button>
 
                         <div className="w-[60px] h-[85px] relative rounded overflow-hidden shrink-0 bg-gray-50 border border-gray-100">
-                            <img 
-                                src={getImageUrl(item.thumbUrl)} 
-                                alt={item.comicName} 
-                                className="w-full h-full object-cover"
-                            />
+                            <Image 
+                                  src={getImageUrl(item.thumbUrl)} 
+                                  alt={item.comicName} 
+                                  fill
+                                  sizes="60px"
+                                  className="object-cover"
+                              />
                         </div>
 
                         <div className="flex flex-col justify-between overflow-hidden flex-1 pr-4">

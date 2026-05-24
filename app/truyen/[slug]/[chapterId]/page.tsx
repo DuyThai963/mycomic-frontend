@@ -2,11 +2,7 @@ import Link from 'next/link';
 import { comicService } from '@/services/comic.service';
 import SaveHistory from '@/components/SaveHistory';
 
-export default async function ChapterPage({ 
-    params 
-}: { 
-    params: Promise<{ slug: string; chapterId: string }> 
-}) {
+export default async function ChapterPage({ params }: { params: any }) {
     const resolvedParams = await params;
     const { slug, chapterId } = resolvedParams;
 
