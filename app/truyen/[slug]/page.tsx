@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { comicService } from '@/services/comic.service';
 
-export default async function ComicDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ComicDetailPage({ params }: { params: any }) {
     // 1. Giải mã params trước khi dùng
     const resolvedParams = await params;
     const { slug } = resolvedParams;
