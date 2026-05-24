@@ -79,7 +79,7 @@ export default async function ChapterPage({ params }: { params: any }) {
 
             {/* Vùng nội dung ảnh */}
             <div className="w-full max-w-3xl bg-white flex flex-col items-center shadow-sm my-4 border-x border-gray-200">
-                {chapter.chapter_image.map((img) => {
+                {chapter.chapter_image.map((img: any) => {
                     const fullImgUrl = `${domain_cdn}/${chapter.chapter_path}/${img.image_file}`;
                     return (
                         <div key={img.image_page} className="w-full relative">
