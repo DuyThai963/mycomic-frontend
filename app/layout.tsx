@@ -9,6 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "DT MyComic",
   description: "Web đọc truyện tranh siêu nhẹ, siêu mượt",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    title: "DT MyComic",
+    statusBarStyle: "default",
+  },
 };
 
 export default function RootLayout({
@@ -18,6 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
+      {/* Không chèn meta lung tung trong body, Next.js tự động nạp từ metadata lên <head> hệ thống */}
       <body className={`${inter.className} bg-gray-50 text-gray-900 min-h-screen flex flex-col`}>
         {/* Navbar */}
         <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -26,7 +33,7 @@ export default function RootLayout({
                     DT<span className="text-gray-800">MYCOMIC</span>
                 </Link>
                 
-                {/* Nhét thanh search vào đây */}
+                {/* Thanh search */}
                 <SearchInput />
 
                 <div className="hidden md:block text-sm text-gray-500 shrink-0">

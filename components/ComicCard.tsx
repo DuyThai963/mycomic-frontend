@@ -23,6 +23,7 @@ export default function ComicCard({ comic }: { comic: Comic }) {
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 15vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    priority={true}
                 />
                 
                 {/* Trạng thái góc trên bên trái card */}
