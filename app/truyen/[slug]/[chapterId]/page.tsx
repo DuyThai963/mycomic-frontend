@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { comicService } from '@/services/comic.service';
 import SaveHistory from '@/components/SaveHistory';
+import ActiveKeyboardNavigation from './ActiveKeyboardNavigation';
 
 export default async function ChapterPage({ params }: { params: any }) {
     const resolvedParams = await params;
@@ -40,6 +41,11 @@ export default async function ChapterPage({ params }: { params: any }) {
                 thumbUrl={comicDetail.thumb_url}
                 chapterId={chapterId}
                 chapterName={chapter.chapter_name}
+            />
+
+            <ActiveKeyboardNavigation 
+                prevUrl={nextChapter ? `/truyen/${slug}/${getChapterId(nextChapter.chapter_api_data)}` : null}
+                nextUrl={prevChapter ? `/truyen/${slug}/${getChapterId(prevChapter.chapter_api_data)}` : null}
             />
 
             {/* Thanh điều hướng nhanh trên đầu */}
