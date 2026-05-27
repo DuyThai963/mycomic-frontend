@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./globals.css";
 import SearchInput from "@/components/SearchInput";
 import SmartHeader from "@/components/SmartHeader";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,6 +46,7 @@ export default function RootLayout({
         <main className="flex-grow">
             {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
