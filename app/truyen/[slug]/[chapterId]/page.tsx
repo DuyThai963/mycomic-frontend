@@ -85,10 +85,15 @@ export default async function ChapterPage({ params }: { params: any }) {
 
             {/* Vùng nội dung ảnh */}
             <div className="w-full max-w-3xl bg-white flex flex-col items-center shadow-sm my-4 border-x border-gray-200">
-                {chapter.chapter_image.map((img: any) => {
+                {chapter.chapter_image.map((img: any, index: number) => {
                     const fullImgUrl = `${domain_cdn}/${chapter.chapter_path}/${img.image_file}`;
                     return (
-                        <div key={img.image_page} className="w-full relative">
+                        <div 
+                            key={img.image_page} 
+                            id={`page-wrapper-${index}`}
+                            data-page={index}
+                            className="w-full relative comic-page-item"
+                        >
                             <img src={fullImgUrl} alt={`Trang ${img.image_page + 1}`} loading="lazy" className="w-full h-auto block select-none pointer-events-none" />
                             <span className="absolute bottom-2 right-2 bg-black/40 text-white text-[10px] px-1.5 py-0.5 rounded">
                                 {img.image_page + 1}
