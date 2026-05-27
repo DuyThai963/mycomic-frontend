@@ -37,7 +37,7 @@ export default function SmartChapterNav({ children }: { children: React.ReactNod
 
     return (
         <div 
-            className={`w-full bg-white border-b border-gray-200 py-3 sticky z-40 shadow-sm transition-all duration-300 ${
+            className={`w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 py-3 sticky z-40 shadow-sm transition-all duration-300 ${
                 isHeaderVisible ? 'top-16' : 'top-0'
             }`}
         >

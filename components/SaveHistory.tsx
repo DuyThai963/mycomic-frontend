@@ -92,12 +92,11 @@ export default function SaveHistory({ slug, comicName, thumbUrl, chapterId, chap
 
                         setTimeout(() => {
                             if (window.location.href.includes(chapterId)) {
-                                console.log(`🚀 [SCROLL CHUẨN] Cuộn đến trang đọc dở cũ: ${initialSavedPage}`);
-                                targetPageElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                targetPageElement.scrollIntoView({ behavior: 'auto', block: 'start' });
                                 
                                 setTimeout(() => { allowTrackingRef.current = true; }, 300);
                             }
-                        }, 100);
+                        }, 50);
                     };
 
                     if (imgElement && imgElement.complete) {
@@ -226,9 +225,8 @@ export default function SaveHistory({ slug, comicName, thumbUrl, chapterId, chap
     };
 
     return (
-        /* 🟢 CỤM GIAO DIỆN CHỌN TRANG THÔNG MINH - CHỈ HIỆN TRÊN MOBILE, KHÔNG HIỆN TRÊN PC */
         <div 
-            className={`fixed bottom-6 right-4 z-50 transition-all duration-300 md:hidden ${
+            className={`fixed bottom-6 right-4 z-50 transition-all duration-300 [@media(pointer:coarse)]:block [@media(pointer:fine)]:hidden ${
                 isHeaderVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90 pointer-events-none'
             }`}
         >

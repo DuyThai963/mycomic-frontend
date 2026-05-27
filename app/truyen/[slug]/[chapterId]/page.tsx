@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { comicService } from '@/services/comic.service';
 import SaveHistory from '@/components/SaveHistory';
@@ -34,7 +35,8 @@ export default async function ChapterPage({ params }: { params: any }) {
     const prevChapter = currentIdx < chapterList.length - 1 && currentIdx !== -1 ? chapterList[currentIdx + 1] : null;
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+        /* 🟢 ĐÃ SỬA: Đổi bg-gray-100 thành bg-transparent để ăn theo nền biến body tổng */
+        <div className="min-h-screen bg-transparent flex flex-col items-center">
             {/* ÉP RENDER NGAY ĐẦU TRANG ĐỂ CHẠY LOCALSTORAGE LẬP TỨC */}
             <SaveHistory 
                 slug={slug}
@@ -50,10 +52,10 @@ export default async function ChapterPage({ params }: { params: any }) {
                 nextUrl={prevChapter ? `/truyen/${slug}/${getChapterId(prevChapter.chapter_api_data)}` : null}
             />
 
-            {/* Thanh điều hướng nhanh trên đầu */}
+            {/* Thanh điều hướng nhanh trên đầu (bản thân SmartChapterNav đã được thêm dark:bg-gray-900 ở bước trước) */}
             <SmartChapterNav>
                 <div className="max-w-3xl mx-auto px-4 flex items-center justify-between gap-2">
-                    <Link href={`/truyen/${slug}`} className="text-xs font-medium text-blue-600 hover:underline hidden md:block">
+                    <Link href={`/truyen/${slug}`} className="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline hidden md:block">
                         ← Danh sách chương
                     </Link>
 
@@ -61,15 +63,18 @@ export default async function ChapterPage({ params }: { params: any }) {
                     <div className="flex items-center gap-2 mx-auto md:mx-0">
                         {/* Nút lùi tập */}
                         {nextChapter ? (
-                            <Link href={`/truyen/${slug}/${getChapterId(nextChapter.chapter_api_data)}`} className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-semibold rounded transition-colors">
+                            /* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 */
+                            <Link href={`/truyen/${slug}/${getChapterId(nextChapter.chapter_api_data)}`} className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold rounded transition-colors">
                                 ❮ Trước
                             </Link>
                         ) : (
-                            <button disabled className="px-3 py-1.5 bg-gray-100 text-gray-400 text-xs font-semibold rounded cursor-not-allowed">❮ Trước</button>
+                            /* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-900/50 dark:text-gray-600 */
+                            <button disabled className="px-3 py-1.5 bg-gray-100 dark:bg-gray-900/50 text-gray-400 dark:text-gray-600 text-xs font-semibold rounded cursor-not-allowed">❮ Trước</button>
                         )}
 
                         {/* Tên chương hiện tại */}
-                        <span className="text-xs font-bold text-gray-800 bg-gray-100 px-3 py-1.5 rounded border">
+                        {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-200 dark:bg-gray-800 dark:border-gray-700 */}
+                        <span className="text-xs font-bold text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded border dark:border-gray-700">
                             Chương {chapter.chapter_name}
                         </span>
 
@@ -79,14 +84,16 @@ export default async function ChapterPage({ params }: { params: any }) {
                                 Sau ❯
                             </Link>
                         ) : (
-                            <button disabled className="px-3 py-1.5 bg-gray-100 text-gray-400 text-xs font-semibold rounded cursor-not-allowed">Sau ❯</button>
+                            /* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-900/50 dark:text-gray-600 */
+                            <button disabled className="px-3 py-1.5 bg-gray-100 dark:bg-gray-900/50 text-gray-400 dark:text-gray-600 text-xs font-semibold rounded cursor-not-allowed">Sau ❯</button>
                         )}
                     </div>
                 </div>
             </SmartChapterNav>
 
-            {/* Vùng nội dung ảnh */}
-            <div className="w-full max-w-3xl bg-white flex flex-col items-center shadow-sm my-4 border-x border-gray-200">
+            {/* Vùng nội dung ảnh truyện */}
+            {/* 🟢 ĐÃ SỬA: Đổi bg-white thành bg-transparent để tiệp màu nền tối, thêm dark:border-gray-800 */}
+            <div className="w-full max-w-3xl bg-transparent flex flex-col items-center shadow-sm my-4 border-x border-gray-200 dark:border-gray-800">
                 {chapter.chapter_image.map((img: any, index: number) => {
                     const fullImgUrl = `${domain_cdn}/${chapter.chapter_path}/${img.image_file}`;
                     return (
@@ -106,16 +113,20 @@ export default async function ChapterPage({ params }: { params: any }) {
             </div>
 
             {/* Điều hướng dưới đáy */}
-            <div className="w-full bg-white border-t border-gray-200 py-6 mt-auto">
+            {/* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-900 dark:border-gray-800 */}
+            <div className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-6 mt-auto">
                 <div className="max-w-md mx-auto px-4 flex justify-center gap-4">
                     {nextChapter && (
-                        <Link href={`/truyen/${slug}/${getChapterId(nextChapter.chapter_api_data)}`} className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg text-sm transition-colors">
+                        /* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 */
+                        <Link href={`/truyen/${slug}/${getChapterId(nextChapter.chapter_api_data)}`} className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-medium py-2 px-6 rounded-lg text-sm transition-colors">
                             Chương Trước
                         </Link>
                     )}
-                    <Link href={`/truyen/${slug}`} className="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-6 rounded-lg text-sm transition-colors shadow">
+                    {/* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-700 dark:hover:bg-gray-600 */}
+                    <Link href={`/truyen/${slug}`} className="bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium py-2 px-6 rounded-lg text-sm transition-colors shadow">
                         Mục Lục
                     </Link>
+                    {/* Nút chương sau giữ nguyên màu xanh làm điểm nhấn nổi bật */}
                     {prevChapter && (
                         <Link href={`/truyen/${slug}/${getChapterId(prevChapter.chapter_api_data)}`} className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg text-sm transition-colors">
                             Chương Sau

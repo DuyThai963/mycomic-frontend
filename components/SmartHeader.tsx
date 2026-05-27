@@ -42,7 +42,7 @@ export default function SmartHeader({ children }: { children: React.ReactNode })
 
     return (
         <header 
-            className={`bg-white shadow-sm sticky top-0 z-50 transition-transform duration-300 ${
+            className={`bg-white dark:bg-gray-900 border-b border-transparent dark:border-gray-800 shadow-sm sticky top-0 z-50 transition-all duration-300 ${
                 isVisible ? 'translate-y-0' : '-translate-y-full'
             }`}
         >

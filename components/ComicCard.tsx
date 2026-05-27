@@ -13,10 +13,11 @@ export default function ComicCard({ comic }: { comic: Comic }) {
     return (
         <Link 
             href={`/truyen/${comic.slug}`} 
-            className="group flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200/70 overflow-hidden transition-all duration-300"
+            /* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-900/40 dark:border-gray-800 dark:hover:shadow-black/30 */
+            className="group flex flex-col bg-white dark:bg-gray-900/40 rounded-xl shadow-sm hover:shadow-md border border-gray-200/70 dark:border-gray-800 overflow-hidden transition-all duration-300"
         >
             {/* Cover Image Area */}
-            <div className="relative w-full aspect-[2/3] bg-gray-50 overflow-hidden">
+            <div className="relative w-full aspect-[2/3] bg-gray-50 dark:bg-gray-950 overflow-hidden">
                 <Image
                     src={imageUrl}
                     alt={comic.name}
@@ -26,14 +27,14 @@ export default function ComicCard({ comic }: { comic: Comic }) {
                     priority={true}
                 />
                 
-                {/* Trạng thái góc trên bên trái card */}
+                {/* Trạng thái góc trên bên trái card - Thêm dark:... cho tag */}
                 <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
                     {comic.status === 'ongoing' ? (
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-md shadow-sm">
+                        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-md shadow-sm">
                             Đang ra
                         </span>
                     ) : comic.status === 'coming_soon' ? (
-                        <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded-md shadow-sm">
+                        <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/80 border border-amber-200/60 dark:border-amber-800/60 px-2 py-0.5 rounded-md shadow-sm">
                             Sắp chiếu
                         </span>
                     ) : null}
@@ -48,14 +49,17 @@ export default function ComicCard({ comic }: { comic: Comic }) {
             </div>
 
             {/* Content Text Info Area */}
-            <div className="p-3 flex flex-col flex-grow bg-white">
-                <h3 className="font-bold text-gray-800 text-sm line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors duration-200 flex-grow" title={comic.name}>
+            {/* 🟢 ĐÃ SỬA: Đổi bg-white thành bg-transparent để ăn theo nền card tổng */}
+            <div className="p-3 flex flex-col flex-grow bg-transparent">
+                {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-200 và dark:group-hover:text-blue-400 */}
+                <h3 className="font-bold text-gray-800 dark:text-gray-200 text-sm line-clamp-2 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex-grow" title={comic.name}>
                     {comic.name}
                 </h3>
                 
-                {/* Tag thể loại nhỏ xinh dưới chân card */}
-                <div className="mt-2 pt-2 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider truncate">
+                {/* Tag thể loại nhỏ xinh dưới chân card - Thêm dark:border-gray-800 */}
+                <div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                    {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-500 */}
+                    <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider truncate">
                         🏷️ {primaryCategory}
                     </span>
                 </div>

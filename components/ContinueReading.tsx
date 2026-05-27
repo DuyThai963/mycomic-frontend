@@ -53,8 +53,10 @@ export default function ContinueReading() {
     };
 
     return (
-        <div className="mb-8 pb-6 border-b border-gray-100">
-            <h2 className="text-base font-bold text-gray-950 mb-4 flex items-center gap-2">
+        /* 🟢 ĐÃ SỬA: Thêm dark:border-gray-800 cho đường kẻ phân tách khối */
+        <div className="mb-8 pb-6 border-b border-gray-100 dark:border-gray-800">
+            {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-100 để tiêu đề khối không bị đen mờ */}
+            <h2 className="text-base font-bold text-gray-950 dark:text-gray-100 mb-4 flex items-center gap-2">
                 ⏱️ Truyện bạn đang đọc dở
             </h2>
             
@@ -62,17 +64,20 @@ export default function ContinueReading() {
                 {history.map((item) => (
                     <div 
                         key={item.slug} 
-                        className="w-[280px] shrink-0 bg-white border border-gray-200 rounded-lg p-2.5 flex gap-3 snap-start relative group transition-all"
+                        /* 🟢 ĐÃ SỬA: Đảm bảo đồng bộ màu card nền tối */
+                        className="w-[280px] shrink-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-2.5 flex gap-3 snap-start relative group transition-all"
                     >
+                        {/* 🟢 ĐÃ SỬA: Thêm dark:hover:bg-gray-800 cho nút xóa ✕ */}
                         <button
                             onClick={(e) => handleDelete(item.slug, e)}
-                            className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xs p-1 rounded-full hover:bg-gray-100 leading-none transition-colors z-10"
+                            className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xs p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 leading-none transition-colors z-10"
                             title="Xóa khỏi lịch sử đọc"
                         >
                             ✕
                         </button>
 
-                        <div className="w-[60px] h-[85px] relative rounded overflow-hidden shrink-0 bg-gray-50 border border-gray-100">
+                        {/* 🟢 ĐÃ SỬA: Thêm dark:bg-gray-950 dark:border-gray-800 cho khung bọc ảnh bìa */}
+                        <div className="w-[60px] h-[85px] relative rounded overflow-hidden shrink-0 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800">
                             <Image 
                                   src={getImageUrl(item.thumbUrl)} 
                                   alt={item.comicName} 
@@ -84,11 +89,13 @@ export default function ContinueReading() {
 
                         <div className="flex flex-col justify-between overflow-hidden flex-1 pr-4">
                             <div>
-                                <h3 className="font-semibold text-gray-900 text-sm truncate" title={item.comicName}>
+                                {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-200 để tên truyện sáng rõ nét */}
+                                <h3 className="font-semibold text-gray-900 dark:text-gray-200 text-sm truncate" title={item.comicName}>
                                     {item.comicName}
                                 </h3>
-                                <p className="text-gray-500 text-xs mt-0.5">
-                                    Dừng ở: <span className="font-medium text-gray-800">
+                                {/* 🟢 ĐÃ SỬA: Thêm dark:text-gray-400 và dark:text-gray-300 cho phần số chương, trang */}
+                                <p className="text-gray-500 dark:text-gray-400 text-xs mt-0.5">
+                                    Dừng ở: <span className="font-medium text-gray-800 dark:text-gray-300">
                                         Chap {item.chapterName} {item.lastPage && item.lastPage > 1 ? `(Trang ${item.lastPage})` : ''}
                                     </span>
                                 </p>
