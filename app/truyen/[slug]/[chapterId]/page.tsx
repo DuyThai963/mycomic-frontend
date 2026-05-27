@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { comicService } from '@/services/comic.service';
 import SaveHistory from '@/components/SaveHistory';
 import ActiveKeyboardNavigation from './ActiveKeyboardNavigation';
+import SmartChapterNav from '@/components/SmartChapterNav';
 
 export default async function ChapterPage({ params }: { params: any }) {
     const resolvedParams = await params;
@@ -41,6 +42,7 @@ export default async function ChapterPage({ params }: { params: any }) {
                 thumbUrl={comicDetail.thumb_url}
                 chapterId={chapterId}
                 chapterName={chapter.chapter_name}
+                totalPages={chapter.chapter_image.length}
             />
 
             <ActiveKeyboardNavigation 
@@ -49,7 +51,7 @@ export default async function ChapterPage({ params }: { params: any }) {
             />
 
             {/* Thanh điều hướng nhanh trên đầu */}
-            <div className="w-full bg-white border-b border-gray-200 py-3 sticky top-16 z-40 shadow-sm">
+            <SmartChapterNav>
                 <div className="max-w-3xl mx-auto px-4 flex items-center justify-between gap-2">
                     <Link href={`/truyen/${slug}`} className="text-xs font-medium text-blue-600 hover:underline hidden md:block">
                         ← Danh sách chương
@@ -81,7 +83,7 @@ export default async function ChapterPage({ params }: { params: any }) {
                         )}
                     </div>
                 </div>
-            </div>
+            </SmartChapterNav>
 
             {/* Vùng nội dung ảnh */}
             <div className="w-full max-w-3xl bg-white flex flex-col items-center shadow-sm my-4 border-x border-gray-200">

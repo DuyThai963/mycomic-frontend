@@ -10,6 +10,7 @@ interface HistoryItem {
     thumbUrl: string;
     chapterId: string;
     chapterName: string;
+    lastPage?: number;
 }
 
 export default function ContinueReading() {
@@ -87,7 +88,9 @@ export default function ContinueReading() {
                                     {item.comicName}
                                 </h3>
                                 <p className="text-gray-500 text-xs mt-0.5">
-                                    Dừng ở: <span className="font-medium text-gray-800">Chap {item.chapterName}</span>
+                                    Dừng ở: <span className="font-medium text-gray-800">
+                                        Chap {item.chapterName} {item.lastPage && item.lastPage > 1 ? `(Trang ${item.lastPage})` : ''}
+                                    </span>
                                 </p>
                             </div>
                             

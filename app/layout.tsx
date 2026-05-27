@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import SearchInput from "@/components/SearchInput";
+import SmartHeader from "@/components/SmartHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      {/* Không chèn meta lung tung trong body, Next.js tự động nạp từ metadata lên <head> hệ thống */}
       <body className={`${inter.className} bg-gray-50 text-gray-900 min-h-screen flex flex-col`}>
-        {/* Navbar */}
-        <header className="bg-white shadow-sm sticky top-0 z-50">
+        <SmartHeader>
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
                 <Link href="/" className="text-2xl font-black text-blue-600 tracking-tight shrink-0">
                     DT<span className="text-gray-800">MYCOMIC</span>
@@ -40,7 +39,7 @@ export default function RootLayout({
                     Kho truyện mới nhất
                 </div>
             </div>
-        </header>
+        </SmartHeader>
         
         {/* Nội dung chính */}
         <main className="flex-grow">
